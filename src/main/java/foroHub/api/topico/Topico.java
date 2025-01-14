@@ -74,4 +74,20 @@ public class Topico {
 	public String getRespuestas() {
 		return respuestas;
 	}
+
+	public void actualizarTopico(DatosActualizarTopico datosActualizartopico) {
+	  if (datosActualizartopico.mensaje()!=null) {
+		  this.mensaje= datosActualizartopico.mensaje();
+		}
+		if (datosActualizartopico.autor()!=null) {
+			this.titulo= datosActualizartopico.titulo();
+		}
+
+		if (datosActualizartopico.autor()!=null) {
+			this.autor= datosActualizartopico.autor();
+		}
+		if (datosActualizartopico.fechaCreacion()!=null) {
+		this.fechaCreacion= LocalDate.parse(datosActualizartopico.fechaCreacion());
+	}
+	}
 }

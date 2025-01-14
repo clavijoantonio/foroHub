@@ -45,6 +45,11 @@ public class TopicoController {
 					topico.getAutor(), topico.getStatus(),topico.getFechaCreacion().toString(), topico.getRespuestas());
 			 return ResponseEntity.ok(datosTopico);
 		}
-	    
+		@PutMapping
+		@Transactional
+	    public  void actualizaTopico(@RequestBody @Valid DatosActualizarTopico datosActualizartopico){
+			Topico topico = repository.getReferenceById(datosActualizartopico.id());
+			topico.actualizarTopico(datosActualizartopico);
+		}
 	    
 }
