@@ -15,6 +15,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
 @Table(name = "topico")
 @Entity(name = "Topico")
 @Getter
@@ -30,7 +31,7 @@ public class Topico {
 	private String titulo;
 	private String mensaje;
 	private LocalDate fechaCreacion;
-	private String status;
+	private Boolean status;
 	private String autor;
 	private String respuestas;
 
@@ -38,14 +39,14 @@ public class Topico {
 		this.titulo = datos.titulo();
 		this.mensaje = datos.mensaje();
 		this.fechaCreacion = LocalDate.parse(datos.fechaCreacion());
-		this.status = datos.status();
+		this.status = true;
 		this.autor = datos.autor();
 		this.respuestas = datos.respuestas();
 
 	}
-	public Topico(){
+public Topico(){
 
-	}
+}
 
 	public Long getId() {
 		return id;
@@ -63,7 +64,7 @@ public class Topico {
 		return fechaCreacion;
 	}
 
-	public String getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
@@ -90,4 +91,8 @@ public class Topico {
 		this.fechaCreacion= LocalDate.parse(datosActualizartopico.fechaCreacion());
 	}
 	}
+
+    public void desativartopico() {
+		this.status=false;
+    }
 }

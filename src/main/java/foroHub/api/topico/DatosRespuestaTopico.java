@@ -4,7 +4,7 @@ public record DatosRespuestaTopico(
         String titulo,
         String mensaje,
         String fechaCreacion,
-        String status,
+        Boolean status,
         String autor,
         String respuestas
 ) {

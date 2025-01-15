@@ -35,7 +35,7 @@ public class TopicoController {
 	    
 	    @GetMapping
 	    public Page<DatosListaTopico> listarTopico(@PageableDefault(page=0, size=10, sort = {"fechaCreacion"}) Pageable paginacion) {
-	        return repository.findAll(paginacion).map(DatosListaTopico::new);
+	        return repository.findByStatusTrue(paginacion).map(DatosListaTopico::new);
 	    }
 
 		@GetMapping("/{id}")
@@ -51,5 +51,10 @@ public class TopicoController {
 			Topico topico = repository.getReferenceById(datosActualizartopico.id());
 			topico.actualizarTopico(datosActualizartopico);
 		}
-	    
+	 @DeleteMapping("/{id}")
+	 @Transactional
+	 public void eliminarTopico (@PathVariable Long id){
+          Topico topico= repository.getReferenceById(id);
+		  topico.desativartopico();
+	 }
 }
