@@ -1,8 +1,6 @@
 package foroHub.api.Controller;
 
 import java.net.URI;
-import java.util.List;
-
 import foroHub.api.topico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,12 +43,14 @@ public class TopicoController {
 					topico.getAutor(), topico.getStatus(),topico.getFechaCreacion().toString(), topico.getRespuestas());
 			 return ResponseEntity.ok(datosTopico);
 		}
+
 		@PutMapping
 		@Transactional
 	    public  void actualizaTopico(@RequestBody @Valid DatosActualizarTopico datosActualizartopico){
 			Topico topico = repository.getReferenceById(datosActualizartopico.id());
 			topico.actualizarTopico(datosActualizartopico);
 		}
+
 	 @DeleteMapping("/{id}")
 	 @Transactional
 	 public void eliminarTopico (@PathVariable Long id){

@@ -1,8 +1,6 @@
 package foroHub.api.topico;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "topico")
 @Entity(name = "Topico")
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Topico {
@@ -44,9 +41,29 @@ public class Topico {
 		this.respuestas = datos.respuestas();
 
 	}
-public Topico(){
+public Topico (){
 
 }
+
+    public void actualizarTopico(DatosActualizarTopico datosActualizartopico) {
+	  if (datosActualizartopico.mensaje()!=null) {
+		  this.mensaje= datosActualizartopico.mensaje();
+		}
+		if (datosActualizartopico.autor()!=null) {
+			this.titulo= datosActualizartopico.titulo();
+		}
+
+		if (datosActualizartopico.autor()!=null) {
+			this.autor= datosActualizartopico.autor();
+		}
+		if (datosActualizartopico.fechaCreacion()!=null) {
+		this.fechaCreacion= LocalDate.parse(datosActualizartopico.fechaCreacion());
+	}
+	}
+
+    public void desativartopico() {
+		this.status=false;
+    }
 
 	public Long getId() {
 		return id;
@@ -75,24 +92,4 @@ public Topico(){
 	public String getRespuestas() {
 		return respuestas;
 	}
-
-	public void actualizarTopico(DatosActualizarTopico datosActualizartopico) {
-	  if (datosActualizartopico.mensaje()!=null) {
-		  this.mensaje= datosActualizartopico.mensaje();
-		}
-		if (datosActualizartopico.autor()!=null) {
-			this.titulo= datosActualizartopico.titulo();
-		}
-
-		if (datosActualizartopico.autor()!=null) {
-			this.autor= datosActualizartopico.autor();
-		}
-		if (datosActualizartopico.fechaCreacion()!=null) {
-		this.fechaCreacion= LocalDate.parse(datosActualizartopico.fechaCreacion());
-	}
-	}
-
-    public void desativartopico() {
-		this.status=false;
-    }
 }
